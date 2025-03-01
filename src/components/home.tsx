@@ -187,8 +187,8 @@ const Home: React.FC = () => {
         onSignOut={handleSignOut}
       />
 
-      <main className="flex-1 container mx-auto px-4 py-8 md:py-12 flex flex-col lg:flex-row gap-8">
-        <div className="lg:w-2/3">
+      <main className="flex-1 container mx-auto px-4 py-8 md:py-12 flex flex-col gap-8">
+        <div className="w-full">
           <ConversionInterface
             initialCategory={selectedCategory}
             onSaveConversion={handleSaveConversion}
@@ -196,7 +196,7 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <div className="lg:w-1/3">
+        <div className="w-full">
           <ConversionHistory
             historyItems={conversionHistory}
             onLoadConversion={handleLoadConversion}
