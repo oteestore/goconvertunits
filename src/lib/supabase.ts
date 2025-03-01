@@ -1,10 +1,60 @@
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
 
-// Get Supabase URL and key from environment variables
-const supabaseUrl = "https://shaorebfoqxvwsmtfvjj.supabase.co";
-const supabaseAnonKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoYW9yZWJmb3F4dndzbXRmdmpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MzQ2MTksImV4cCI6MjA1NjQxMDYxOX0.oiDaWstW6QTHs3S9ROsn3a3LcuwcWOKM5TgNg3lQUCc";
+// Create a mock Supabase client for development
+const createMockClient = () => {
+  return {
+    auth: {
+      getSession: async () => ({ data: { session: null } }),
+      onAuthStateChange: () => ({
+        data: { subscription: { unsubscribe: () => {} } },
+      }),
+      signInWithPassword: async () => ({
+        data: {
+          session: {
+            user: {
+              id: "mock-user-id",
+              email: "user@example.com",
+              user_metadata: { full_name: "Test User" },
+            },
+          },
+        },
+        error: null,
+      }),
+      signUp: async () => ({
+        data: {
+          session: {
+            user: {
+              id: "mock-user-id",
+              email: "user@example.com",
+              user_metadata: { full_name: "Test User" },
+            },
+          },
+        },
+        error: null,
+      }),
+      signOut: async () => ({}),
+    },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          order: () => ({ data: [], error: null }),
+        }),
+        data: [],
+        error: null,
+      }),
+      insert: () => ({
+        select: () => ({
+          data: [{ id: "mock-id", created_at: new Date().toISOString() }],
+          error: null,
+        }),
+      }),
+      delete: () => ({
+        eq: () => ({ error: null }),
+      }),
+    }),
+  };
+};
 
-// Create the Supabase client
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
+// Use mock client since Supabase project was deleted
+export const supabase = createMockClient() as any;
