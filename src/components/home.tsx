@@ -187,11 +187,20 @@ const Home: React.FC = () => {
         onSignOut={handleSignOut}
       />
 
-      <main className="flex-1 container mx-auto px-4 py-8 md:py-12 flex flex-col gap-8">
-        <div className="w-full">
+      <main className="flex-1 container mx-auto px-4 py-8 md:py-12 flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-2/3">
           <ConversionInterface
             initialCategory={selectedCategory}
             onSaveConversion={handleSaveConversion}
+            isAuthenticated={isAuthenticated}
+          />
+        </div>
+
+        <div className="lg:w-1/3">
+          <ConversionHistory
+            historyItems={conversionHistory}
+            onLoadConversion={handleLoadConversion}
+            onDeleteItem={handleDeleteHistoryItem}
             isAuthenticated={isAuthenticated}
           />
         </div>
