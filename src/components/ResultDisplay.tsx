@@ -10,6 +10,8 @@ interface ResultDisplayProps {
   targetUnit?: string;
   formula?: string;
   isLoading?: boolean;
+  onSave?: () => void;
+  isAuthenticated?: boolean;
 }
 
 const ResultDisplay = ({
@@ -19,6 +21,8 @@ const ResultDisplay = ({
   targetUnit = "feet",
   formula = "1 meter = 3.28084 feet",
   isLoading = false,
+  onSave = () => {},
+  isAuthenticated = false,
 }: ResultDisplayProps) => {
   return (
     <Card className="w-full p-6 bg-white shadow-sm border-gray-100">
@@ -52,9 +56,22 @@ const ResultDisplay = ({
 
         <Separator className="my-2" />
 
-        {/* Formula display */}
-        <div className="text-sm text-gray-500">
-          <span className="font-medium">Formula:</span> {formula}
+        {/* Formula display and save button */}
+        <div className="flex justify-between items-center">
+          <div className="text-sm text-gray-500">
+            <span className="font-medium">Formula:</span> {formula}
+          </div>
+          <button
+            onClick={onSave}
+            className="px-3 py-1 bg-primary text-white rounded-md text-sm hover:bg-primary/90 transition-colors"
+            title={
+              isAuthenticated
+                ? "Save this conversion"
+                : "Sign in to save conversions"
+            }
+          >
+            {isAuthenticated ? "Save" : "Sign in to save"}
+          </button>
         </div>
       </div>
     </Card>

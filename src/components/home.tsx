@@ -24,6 +24,34 @@ const Home: React.FC = () => {
   >([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("length");
 
+  // Fetch conversion history from Supabase
+  const fetchConversionHistory = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("conversion_history")
+        .select("*")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+
+      if (data) {
+        const formattedHistory: ConversionHistoryItem[] = data.map((item) => ({
+          id: item.id,
+          timestamp: new Date(item.created_at),
+          category: item.category,
+          fromValue: parseFloat(item.from_value),
+          fromUnit: item.from_unit,
+          toValue: parseFloat(item.to_value),
+          toUnit: item.to_unit,
+        }));
+        setConversionHistory(formattedHistory);
+      }
+    } catch (error) {
+      console.error("Error fetching conversion history:", error);
+    }
+  };
+
   // Check for existing session on mount
   useEffect(() => {
     const checkSession = async () => {
@@ -31,7 +59,8 @@ const Home: React.FC = () => {
       if (data.session) {
         setIsAuthenticated(true);
         setUser(data.session.user);
-        // Here you would fetch the user's conversion history from your database
+        // Fetch user's conversion history
+        fetchConversionHistory(data.session.user.id);
       }
     };
 
@@ -44,6 +73,7 @@ const Home: React.FC = () => {
           setIsAuthenticated(true);
           setUser(session.user);
           // Fetch user's conversion history
+          fetchConversionHistory(session.user.id);
         } else if (event === "SIGNED_OUT") {
           setIsAuthenticated(false);
           setUser(null);
@@ -79,7 +109,7 @@ const Home: React.FC = () => {
     // Fetch user's conversion history
   };
 
-  const handleSaveConversion = (conversionData: {
+  const handleSaveConversion = async (conversionData: {
     sourceValue: number;
     sourceUnit: string;
     targetValue: number;
@@ -91,23 +121,54 @@ const Home: React.FC = () => {
       return;
     }
 
-    // In a real app, you would save this to your database
-    const newHistoryItem: ConversionHistoryItem = {
-      id: Date.now().toString(),
-      timestamp: new Date(),
-      category: conversionData.category,
-      fromValue: conversionData.sourceValue,
-      fromUnit: conversionData.sourceUnit,
-      toValue: conversionData.targetValue,
-      toUnit: conversionData.targetUnit,
-    };
+    try {
+      // Save to Supabase
+      const { data, error } = await supabase
+        .from("conversion_history")
+        .insert({
+          user_id: user.id,
+          category: conversionData.category,
+          from_value: conversionData.sourceValue,
+          from_unit: conversionData.sourceUnit,
+          to_value: conversionData.targetValue,
+          to_unit: conversionData.targetUnit,
+        })
+        .select();
 
-    setConversionHistory([newHistoryItem, ...conversionHistory]);
+      if (error) throw error;
+
+      // Create a new history item for the UI
+      const newHistoryItem: ConversionHistoryItem = {
+        id: data[0].id,
+        timestamp: new Date(data[0].created_at),
+        category: conversionData.category,
+        fromValue: conversionData.sourceValue,
+        fromUnit: conversionData.sourceUnit,
+        toValue: conversionData.targetValue,
+        toUnit: conversionData.targetUnit,
+      };
+
+      setConversionHistory([newHistoryItem, ...conversionHistory]);
+    } catch (error) {
+      console.error("Error saving conversion:", error);
+    }
   };
 
-  const handleDeleteHistoryItem = (id: string) => {
-    // In a real app, you would delete this from your database
-    setConversionHistory(conversionHistory.filter((item) => item.id !== id));
+  const handleDeleteHistoryItem = async (id: string) => {
+    try {
+      // Delete from Supabase
+      const { error } = await supabase
+        .from("conversion_history")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+
+      // Update local state
+      setConversionHistory(conversionHistory.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting conversion history item:", error);
+    }
   };
 
   const handleLoadConversion = (item: ConversionHistoryItem) => {
@@ -131,6 +192,7 @@ const Home: React.FC = () => {
           <ConversionInterface
             initialCategory={selectedCategory}
             onSaveConversion={handleSaveConversion}
+            isAuthenticated={isAuthenticated}
           />
         </div>
 

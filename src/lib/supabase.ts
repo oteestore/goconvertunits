@@ -23,6 +23,24 @@ const createMockClient = () => {
       }),
       signOut: async () => ({}),
     },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          order: () => ({ data: [], error: null }),
+        }),
+        data: [],
+        error: null,
+      }),
+      insert: () => ({
+        select: () => ({
+          data: [{ id: "mock-id", created_at: new Date().toISOString() }],
+          error: null,
+        }),
+      }),
+      delete: () => ({
+        eq: () => ({ error: null }),
+      }),
+    }),
   };
 };
 

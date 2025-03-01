@@ -13,11 +13,13 @@ interface ConversionInterfaceProps {
     targetUnit: string;
     category: string;
   }) => void;
+  isAuthenticated?: boolean;
 }
 
 const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
   initialCategory = "length",
   onSaveConversion = () => {},
+  isAuthenticated = false,
 }) => {
   const [selectedCategory, setSelectedCategory] =
     useState<string>(initialCategory);
@@ -74,6 +76,16 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
             targetValue={conversionResult}
             targetUnit={targetUnit}
             formula={formula}
+            onSave={() => {
+              onSaveConversion({
+                sourceValue,
+                sourceUnit,
+                targetValue: conversionResult,
+                targetUnit,
+                category: selectedCategory,
+              });
+            }}
+            isAuthenticated={isAuthenticated}
           />
         </div>
       </Card>
