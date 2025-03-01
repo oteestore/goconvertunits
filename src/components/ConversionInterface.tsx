@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CategorySelector from "./CategorySelector";
 import ConversionForm from "./ConversionForm";
 import ResultDisplay from "./ResultDisplay";
+import ConversionHistory from "./ConversionHistory";
 import { Card } from "./ui/card";
 
 interface ConversionInterfaceProps {
@@ -91,6 +92,15 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
             isAuthenticated={isAuthenticated}
           />
         </div>
+      </Card>
+
+      <Card className="p-6 bg-white shadow-sm rounded-lg mt-6">
+        <ConversionHistory
+          historyItems={[]}
+          onLoadConversion={() => {}}
+          onDeleteItem={() => {}}
+          isAuthenticated={isAuthenticated}
+        />
       </Card>
     </div>
   );
