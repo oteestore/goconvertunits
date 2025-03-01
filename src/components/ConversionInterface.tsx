@@ -55,9 +55,12 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
   return (
     <div className="w-full max-w-3xl mx-auto bg-gray-50 p-6 rounded-xl shadow-sm">
       <Card className="p-6 bg-white shadow-sm rounded-lg mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-2">
           Unit Converter
         </h2>
+        <p className="text-gray-500 mb-6">
+          Quick and accurate unit conversions
+        </p>
 
         <div className="space-y-6">
           <CategorySelector

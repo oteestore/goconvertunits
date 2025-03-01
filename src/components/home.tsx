@@ -218,8 +218,8 @@ const Home: React.FC = () => {
             © {new Date().getFullYear()} GoConvertUnits. All rights reserved.
           </p>
           <p className="mt-2">
-            A clean, minimalist unit conversion application inspired by Notion's
-            design aesthetic.
+            We use cookies to enhance your experience – by continuing, you agree
+            to our use of cookies.
           </p>
         </div>
       </footer>
