@@ -195,15 +195,6 @@ const Home: React.FC = () => {
             isAuthenticated={isAuthenticated}
           />
         </div>
-
-        <div className="w-full">
-          <ConversionHistory
-            historyItems={conversionHistory}
-            onLoadConversion={handleLoadConversion}
-            onDeleteItem={handleDeleteHistoryItem}
-            isAuthenticated={isAuthenticated}
-          />
-        </div>
       </main>
 
       <AuthenticationModal

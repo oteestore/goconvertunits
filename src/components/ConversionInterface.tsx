@@ -92,6 +92,15 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
           />
         </div>
       </Card>
+
+      <div className="mt-6">
+        <ConversionHistory
+          historyItems={[]}
+          onLoadConversion={() => {}}
+          onDeleteItem={() => {}}
+          isAuthenticated={isAuthenticated}
+        />
+      </div>
     </div>
   );
 };
