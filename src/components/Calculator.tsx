@@ -245,13 +245,13 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 gap-1">
+      <div className="grid grid-cols-5 gap-1.5">
         {/* Row 1 */}
         <Button
           variant="outline"
           size="sm"
           onClick={calculateSin}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           sin
         </Button>
@@ -259,7 +259,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateCos}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           cos
         </Button>
@@ -267,14 +267,24 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateTan}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           tan
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("7")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("7")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           7
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("8")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("8")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           8
         </Button>
 
@@ -283,7 +293,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateInverseSin}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           sin<sup>-1</sup>
         </Button>
@@ -291,7 +301,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateInverseCos}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           cos<sup>-1</sup>
         </Button>
@@ -299,14 +309,24 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateInverseTan}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           tan<sup>-1</sup>
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("4")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("4")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           4
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("5")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("5")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           5
         </Button>
 
@@ -315,7 +335,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={() => calculatePower(2)}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           x<sup>2</sup>
         </Button>
@@ -323,7 +343,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={() => calculatePower(3)}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           x<sup>3</sup>
         </Button>
@@ -331,14 +351,24 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={() => performOperation("^")}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           x<sup>y</sup>
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("1")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("1")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           1
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("2")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("2")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           2
         </Button>
 
@@ -347,7 +377,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateLn}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           ln
         </Button>
@@ -355,7 +385,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateLog}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           log
         </Button>
@@ -363,14 +393,24 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateReciprocal}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           1/x
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("0")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("0")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           0
         </Button>
-        <Button variant="secondary" size="sm" onClick={inputDecimal}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={inputDecimal}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           .
         </Button>
 
@@ -379,7 +419,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={() => inputDigit("(")}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           (
         </Button>
@@ -387,7 +427,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={() => inputDigit(")")}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           )
         </Button>
@@ -395,7 +435,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="outline"
           size="sm"
           onClick={calculateFactorial}
-          className="text-primary"
+          className="bg-gray-200 hover:bg-gray-300 text-primary"
         >
           n!
         </Button>
@@ -403,36 +443,58 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="secondary"
           size="sm"
           onClick={calculateRandom}
-          className="text-primary"
+          className="bg-gray-300 hover:bg-gray-400 text-primary"
         >
           RND
         </Button>
-        <Button variant="secondary" size="sm" onClick={clearAll}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={clearAll}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           AC
         </Button>
 
         {/* Row 6 */}
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("9")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("9")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           9
         </Button>
         <Button
           variant="secondary"
           size="sm"
           onClick={() => performOperation("+")}
+          className="bg-gray-300 hover:bg-gray-400"
         >
           +
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("6")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("6")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           6
         </Button>
         <Button
           variant="secondary"
           size="sm"
           onClick={() => performOperation("-")}
+          className="bg-gray-300 hover:bg-gray-400"
         >
           -
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => inputDigit("3")}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => inputDigit("3")}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           3
         </Button>
 
@@ -441,6 +503,7 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="secondary"
           size="sm"
           onClick={() => performOperation("×")}
+          className="bg-gray-300 hover:bg-gray-400"
         >
           ×
         </Button>
@@ -448,16 +511,32 @@ const Calculator: React.FC<CalculatorProps> = ({ className = "" }) => {
           variant="secondary"
           size="sm"
           onClick={() => performOperation("÷")}
+          className="bg-gray-300 hover:bg-gray-400"
         >
           ÷
         </Button>
-        <Button variant="secondary" size="sm" onClick={calculateExp}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={calculateExp}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           EXP
         </Button>
-        <Button variant="secondary" size="sm" onClick={memoryRecall}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={memoryRecall}
+          className="bg-gray-300 hover:bg-gray-400"
+        >
           MR
         </Button>
-        <Button variant="default" size="sm" onClick={calculateResult}>
+        <Button
+          variant="default"
+          size="sm"
+          onClick={calculateResult}
+          className="bg-primary hover:bg-primary/90"
+        >
           =
         </Button>
       </div>
