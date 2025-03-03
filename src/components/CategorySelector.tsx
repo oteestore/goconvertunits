@@ -32,7 +32,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
             <TabsTrigger
               key={category}
               value={category}
-              className="flex-shrink-0 text-gray-600 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="flex-shrink-0 text-[#0f172a] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               {category}
             </TabsTrigger>
