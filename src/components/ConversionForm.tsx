@@ -220,14 +220,14 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-4 items-center">
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">From</label>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
                   variant={fromUnit === unit.value ? "default" : "outline"}
                   size="sm"
                   onClick={() => setFromUnit(unit.value)}
-                  className="flex-grow"
+                  className="w-full"
                 >
                   {unit.label}
                 </Button>
@@ -248,14 +248,14 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
 
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">To</label>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
                   variant={toUnit === unit.value ? "default" : "outline"}
                   size="sm"
                   onClick={() => setToUnit(unit.value)}
-                  className="flex-grow"
+                  className="w-full"
                 >
                   {unit.label}
                 </Button>
