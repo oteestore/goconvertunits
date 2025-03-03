@@ -224,7 +224,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
-                  variant={fromUnit === unit.value ? "default" : "ghost"}
+                  variant={fromUnit === unit.value ? "default" : "outline"}
                   size="sm"
                   onClick={() => setFromUnit(unit.value)}
                   className="w-full"
@@ -252,7 +252,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
-                  variant={toUnit === unit.value ? "default" : "ghost"}
+                  variant={toUnit === unit.value ? "default" : "outline"}
                   size="sm"
                   onClick={() => setToUnit(unit.value)}
                   className="w-full"
