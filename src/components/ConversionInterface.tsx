@@ -54,8 +54,8 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-gray-50 p-6 rounded-xl shadow-sm">
-      <Card className="p-6 bg-white shadow-sm rounded-lg mb-6">
+    <div className="w-full max-w-xl mx-auto">
+      <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">
           Unit Converter
         </h2>
@@ -92,16 +92,16 @@ const ConversionInterface: React.FC<ConversionInterfaceProps> = ({
             isAuthenticated={isAuthenticated}
           />
         </div>
-      </Card>
+      </div>
 
-      <Card className="p-6 bg-white shadow-sm rounded-lg mt-6">
+      <div className="mt-6">
         <ConversionHistory
           historyItems={[]}
           onLoadConversion={() => {}}
           onDeleteItem={() => {}}
           isAuthenticated={isAuthenticated}
         />
-      </Card>
+      </div>
     </div>
   );
 };

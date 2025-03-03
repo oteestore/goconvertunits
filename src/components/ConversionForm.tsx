@@ -198,7 +198,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
   };
 
   return (
-    <Card className="p-6 bg-white shadow-sm rounded-lg">
+    <div>
       <div className="space-y-6">
         <div className="flex flex-col space-y-2">
           <label
@@ -224,7 +224,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
-                  variant={fromUnit === unit.value ? "default" : "outline"}
+                  variant={fromUnit === unit.value ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setFromUnit(unit.value)}
                   className="w-full"
@@ -252,7 +252,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
               {unitOptions.map((unit) => (
                 <Button
                   key={unit.value}
-                  variant={toUnit === unit.value ? "default" : "outline"}
+                  variant={toUnit === unit.value ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setToUnit(unit.value)}
                   className="w-full"
@@ -264,7 +264,7 @@ const ConversionForm: React.FC<ConversionFormProps> = ({
           </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

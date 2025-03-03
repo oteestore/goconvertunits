@@ -21,7 +21,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
   onCategoryChange = () => {},
 }) => {
   return (
-    <div className="w-full bg-white p-4 rounded-lg shadow-sm">
+    <div className="w-full">
       <Tabs
         defaultValue={selectedCategory}
         onValueChange={onCategoryChange}
