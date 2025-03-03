@@ -1,5 +1,14 @@
 import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import {
+  Ruler,
+  Weight,
+  Thermometer,
+  Droplet,
+  Gauge,
+  SquareAsterisk,
+  Clock,
+} from "lucide-react";
 
 interface CategorySelectorProps {
   categories?: string[];
@@ -32,8 +41,19 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
             <TabsTrigger
               key={category}
               value={category}
-              className="flex-shrink-0 text-[#0f172a] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="flex-shrink-0 text-[#0f172a] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground flex items-center"
             >
+              {category === "Length" && <Ruler className="h-4 w-4 mr-2" />}
+              {category === "Weight" && <Weight className="h-4 w-4 mr-2" />}
+              {category === "Temperature" && (
+                <Thermometer className="h-4 w-4 mr-2" />
+              )}
+              {category === "Volume" && <Droplet className="h-4 w-4 mr-2" />}
+              {category === "Speed" && <Gauge className="h-4 w-4 mr-2" />}
+              {category === "Area" && (
+                <SquareAsterisk className="h-4 w-4 mr-2" />
+              )}
+              {category === "Time" && <Clock className="h-4 w-4 mr-2" />}
               {category}
             </TabsTrigger>
           ))}
