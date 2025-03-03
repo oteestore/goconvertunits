@@ -3,6 +3,7 @@ import Header from "./Header";
 import ConversionInterface from "./ConversionInterface";
 import ConversionHistory from "./ConversionHistory";
 import AuthenticationModal from "./AuthenticationModal";
+import Calculator from "./Calculator";
 import { supabase } from "../lib/supabase";
 
 interface ConversionHistoryItem {
@@ -194,6 +195,9 @@ const Home: React.FC = () => {
             onSaveConversion={handleSaveConversion}
             isAuthenticated={isAuthenticated}
           />
+        </div>
+        <div className="w-full max-w-md mx-auto mt-8">
+          <Calculator />
         </div>
       </main>
 
