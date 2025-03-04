@@ -196,7 +196,7 @@ const Home: React.FC = () => {
             isAuthenticated={isAuthenticated}
           />
         </div>
-        <div className="w-full max-w-xl mx-auto mt-6">
+        <div className="w-full max-w-xl mx-auto mt-4">
           <Calculator />
         </div>
       </main>
